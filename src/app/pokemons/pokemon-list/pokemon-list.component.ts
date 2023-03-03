@@ -23,5 +23,15 @@ export class PokemonListComponent {
       this.pokemons= myResult);
   }
 
+  onScroll() {
+    if(this.pokemons)
+      this.pokemonService.getPokemonScroll(this.pokemons?.offset+this.pokemons?.limit,this.pokemons?.limit).subscribe(myResult => {
+        this.pokemons = {
+          ...myResult,
+          data: (this.pokemons?.data || []).concat((myResult.data))
+        }
+      });
+  }
+
 
 }

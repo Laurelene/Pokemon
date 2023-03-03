@@ -1,6 +1,8 @@
 <h1> Liste des Pokémons </h1>
 
-<mat-nav-list>
+
+<!-- voir pour gere le scrool down et up -->
+<mat-nav-list infiniteScroll (scrolled)="onScroll()">
   <mat-list-item *ngFor="let pokemon of pokemons?.data" routerLink="/pokemons/{{pokemon.id}}" act>
     <img matListItemAvatar src="../../../assets/img/sprites/{{pokemon.id}}.png">
     <a matListItemTitle >{{ pokemon.id }} . {{ pokemon.name }} </a>

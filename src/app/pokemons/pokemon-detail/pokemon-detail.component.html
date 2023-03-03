@@ -1,16 +1,25 @@
 <div *ngIf="pokemon">
 
+  <!-- faire le style avec MatList -->
+
+
   <img src="../../../assets/img/sprites/{{pokemon.id}}.png">
 
-  <!-- ajouter 0 si necessaire à l'id -->
-  <p>No {{pokemon.id}}</p>
+  <!-- switch case pour savoir combien de 0 il faut ajouter avant l'id pour avoir un id à 3 chiffres -->
+  <ng-container [ngSwitch]="true">
+    <div *ngSwitchCase="pokemon.id<10">No 00{{pokemon.id}}</div>
+    <div *ngSwitchCase="pokemon.id>9 && pokemon.id<100">No 0{{pokemon.id}}</div>
+  </ng-container>
 
   <h4> {{pokemon.name}}</h4>
+
+  <audio autoplay="autoplay "controls src="../../../assets/audio/{{pokemon.id}}.mp3"></audio>
 
   <li *ngFor="let type of pokemon.types">
     <span matListItemTitle >{{ type }} </span>
   </li>
 
+  <!-- use decimal pipe pour afficher un decimal -->
   <p>Taille : {{pokemon.height}} m</p>
 
   <p>Poids : {{ pokemon.weight}} kg</p>
@@ -19,5 +28,7 @@
 
 
 </div>
+
+<input type="button" class="goBack" value="Retour" (click)="goBack()">
 
 

@@ -50,4 +50,15 @@ export class PokemonService {
     );
   }
 
+  getPokemonScroll(offset: number, limit: number): Observable<PagedData<Pokemon>> {
+    const url = this.pokemonsUrl + "?offset=" + offset + "&limit=" + limit ;
+
+    return this.http.get<PagedData<Pokemon>>(url).pipe(
+      tap(() => this.log(`PokemonService: fetched pokemon offset=${offset} limit=${limit}`)),
+      catchError(this.handleError<PagedData<Pokemon>>(`getPokemon offset=${offset} limit=${limit}`))
+    );
+  }
+
+
+
 }

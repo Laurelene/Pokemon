@@ -5,6 +5,7 @@ import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
 import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
 import {RouterModule} from "@angular/router";
+import {InfiniteScrollModule} from "ngx-infinite-scroll";
 
 
 
@@ -13,11 +14,12 @@ import {RouterModule} from "@angular/router";
     PokemonListComponent,
     PokemonDetailComponent
   ],
-  imports: [
-    CommonModule,
-    MatListModule,
-    RouterModule,
-    MatIconModule
-  ]
+    imports: [
+        CommonModule,
+        MatListModule,
+        RouterModule,
+        MatIconModule,
+        InfiniteScrollModule
+    ]
 })
 export class PokemonsModule { }
