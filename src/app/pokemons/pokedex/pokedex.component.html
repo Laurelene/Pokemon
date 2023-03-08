@@ -1,0 +1,14 @@
+<mat-drawer-container>
+
+  <mat-drawer mode="side" opened>
+    <app-pokemon-list (pokemonSelect)="selectPokemon($event)"></app-pokemon-list>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <app-pokemon-detail [pokemonid]="pokemonDetail"></app-pokemon-detail>
+  </mat-drawer-content>
+
+</mat-drawer-container>
+
+
+
