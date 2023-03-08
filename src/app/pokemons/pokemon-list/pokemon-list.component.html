@@ -1,9 +1,15 @@
 <h1> Liste des Pokémons </h1>
 
+<!-- recherche -->
+<mat-form-field class="example-full-width">
+  <mat-label>Rechercher un pokémon</mat-label>
+  <input matInput (change)="searchPokemons(myInput.value)" #myInput>
+</mat-form-field>
 
-<!-- voir pour gere le scrool down et up -->
-<mat-nav-list infiniteScroll (scrolled)="onScroll()">
-  <mat-list-item *ngFor="let pokemon of pokemons?.data" routerLink="/pokemons/{{pokemon.id}}" act>
+
+<!-- Liste des pokemons -->
+<mat-nav-list class="list" infiniteScroll (scrolled)="onScroll()" [scrollWindow]="false">
+  <mat-list-item *ngFor="let pokemon of pokemons?.data" (click)="getPokemon(pokemon.id)">
     <img matListItemAvatar src="../../../assets/img/sprites/{{pokemon.id}}.png">
     <a matListItemTitle >{{ pokemon.id }} . {{ pokemon.name }} </a>
   </mat-list-item>

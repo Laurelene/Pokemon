@@ -11,7 +11,10 @@ import {PagedData} from "../../models/paged-data.model";
 })
 export class PokemonDetailComponent {
 
-  @Input() pokemon?: Pokemon;
+  pokemon?: Pokemon;
+
+  @Input() pokemonid?: number;
+
 
   constructor(private pokemonService: PokemonService, private route: ActivatedRoute, private router: Router) {
   }
@@ -23,15 +26,16 @@ export class PokemonDetailComponent {
 
   }
 
-  ngOnInit(): void {
+  // quand le input change, donc quand on clique sur un pokemon sur la liste = changement input donc appel de ngOnChanges
+  ngOnChanges(): void {
     this.getPokemons();
   }
 
   getPokemons() {
-
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    return this.pokemonService.getPokemon(id).subscribe(myResult =>
-      this.pokemon = myResult);
+    if(this.pokemonid) {
+      this.pokemonService.getPokemon(this.pokemonid).subscribe(myResult =>
+        this.pokemon = myResult);
+    }
   }
 
 }

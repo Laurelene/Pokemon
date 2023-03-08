@@ -7,8 +7,9 @@
 
   <!-- switch case pour savoir combien de 0 il faut ajouter avant l'id pour avoir un id à 3 chiffres -->
   <ng-container [ngSwitch]="true">
-    <div *ngSwitchCase="pokemon.id<10">No 00{{pokemon.id}}</div>
-    <div *ngSwitchCase="pokemon.id>9 && pokemon.id<100">No 0{{pokemon.id}}</div>
+    <span *ngSwitchCase="pokemon.id<10">No 00{{pokemon.id}}</span>
+    <span *ngSwitchCase="pokemon.id>9 && pokemon.id<100">No 0{{pokemon.id}}</span>
+    <span *ngSwitchDefault>No {{pokemon.id}}</span>
   </ng-container>
 
   <h4> {{pokemon.name}}</h4>
