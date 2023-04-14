@@ -2,6 +2,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
 import {PokemonService} from "../../services/pokemon.service";
 import {PagedData} from "../../models/paged-data.model";
 import {Pokemon} from "../../models/pokemon.model";
+import {DataService} from "../../services/data.service";
 
 @Component({
   selector: 'app-pokemon-list',
@@ -11,18 +12,31 @@ import {Pokemon} from "../../models/pokemon.model";
 export class PokemonListComponent {
   pokemons?: PagedData<Pokemon>;
 
+  isConnected: boolean=false;
+
   @Output() pokemonSelect:EventEmitter<number> = new EventEmitter();
 
-  constructor(private pokemonService: PokemonService) {
+  constructor(private pokemonService: PokemonService, private dataService: DataService) {
   }
 
   ngOnInit(): void {
     this.getPokemons();
+    this.idConnected();
   }
 
   getPokemons() {
     return this.pokemonService.getPokemons().subscribe(myResult =>
       this.pokemons= myResult);
+  }
+
+  idConnected() {
+    this.isConnected = this.pokemonService.isConnected();
+  }
+
+  // Au clic sur le bouton + Pour ajouter un pokemon
+  // on envoie l'id à la team via le dataService
+  addPokemon(id: number) {
+    this.dataService.addPokemonTeam(id);
   }
 
   onScroll() {

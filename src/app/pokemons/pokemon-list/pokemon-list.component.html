@@ -3,7 +3,7 @@
 <!-- recherche -->
 <mat-form-field class="example-full-width">
   <mat-label>Rechercher un pokémon</mat-label>
-  <input matInput (change)="searchPokemons(myInput.value)" #myInput>
+  <input matInput (input)="searchPokemons(myInput.value)" #myInput>
 </mat-form-field>
 
 
@@ -12,6 +12,7 @@
   <mat-list-item *ngFor="let pokemon of pokemons?.data" (click)="getPokemon(pokemon.id)">
     <img matListItemAvatar src="../../../assets/img/sprites/{{pokemon.id}}.png">
     <a matListItemTitle >{{ pokemon.id }} . {{ pokemon.name }} </a>
+    <input *ngIf="isConnected" type="button" value="+" (click)="addPokemon(pokemon.id)">
   </mat-list-item>
 </mat-nav-list>
 

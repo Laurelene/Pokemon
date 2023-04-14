@@ -13,9 +13,13 @@ import {MatInputModule} from "@angular/material/input";
 
 
 @NgModule({
-  declarations: [
+    declarations: [
+        PokemonListComponent,
+        PokemonDetailComponent,
+        PokedexComponent
+    ],
+  exports: [
     PokemonListComponent,
-    PokemonDetailComponent,
     PokedexComponent
   ],
     imports: [

@@ -30,4 +30,5 @@ export class PokedexComponent {
     return this.pokemonDetail = pokemon;
   }
 
+
 }
