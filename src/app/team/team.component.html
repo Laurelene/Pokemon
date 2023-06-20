@@ -1,0 +1,47 @@
+<mat-drawer-container>
+
+  <!-- Module list de la team -->
+  <mat-drawer mode="side" opened>
+    <app-pokemon-list></app-pokemon-list>
+  </mat-drawer>
+
+
+
+  <mat-drawer-content>
+    <button mat-button color="warn" class="btn" routerLink="/pokedex">Déconnexion</button>
+    <h1> Mon Équipe </h1>
+
+    <!-- Liste des pokemons -->
+    <div *ngFor="let pokemon of team">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title-group>
+            <button mat-icon-button (click)="deletePokemon(pokemon.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <mat-card-title>{{ pokemon.name}}</mat-card-title>
+            <img mat-card-xl-image src="../../../assets/img/sprites/{{pokemon.id}}.png" >
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+          <li *ngFor="let type of pokemon.types">
+            <span>{{ type }} </span>
+          </li>
+
+          <p>Taille : {{pokemon.height}} m</p>
+
+          <p>Poids : {{ pokemon.weight}} kg</p>
+          {{pokemon.description}}
+        </mat-card-content>
+      </mat-card>
+
+    </div>
+  </mat-drawer-content>
+
+</mat-drawer-container>
+
+
+
+
+
+

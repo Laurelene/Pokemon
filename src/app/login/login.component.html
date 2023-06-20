@@ -1,0 +1,21 @@
+<mat-form-field appearance="fill">
+  <mat-label>Email</mat-label>
+  <input [(ngModel)]="email" matInput id="email">
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+  <mat-label>Password</mat-label>
+  <!--<input [(ngModel)]="password" matInput id="password">-->
+  <input matInput [(ngModel)]="password" [type]="hide ? 'password' : 'text'">
+  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+  </button>
+</mat-form-field>
+
+<div class="btn">
+  <button mat-button (click)="login()">Connexion</button>
+    <button mat-button routerLink="/">Retour</button>
+</div>
+
+
+
